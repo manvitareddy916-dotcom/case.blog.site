@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Noir Detective | Investigation System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- TOP NAVIGATION -->
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">⌘</div>
+            <div>
+                <h2>CYBER NOIR</h2>
+                <span>DETECTIVE SYSTEM</span>
+            </div>
+        </div>
+
+        <div class="top-center">
+            <span class="online-dot"></span>
+            SYSTEM ONLINE
+        </div>
+
+        <div class="top-actions">
+            <button class="new-case" id="newCaseBtn">＋ NEW CASE</button>
+            <button class="reset-btn" id="resetBtn">RESET VIEW</button>
+            <span class="top-status">● SECURE</span>
+        </div>
+    </header>
+
+    <!-- MAIN LAYOUT -->
+    <div class="dashboard">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar left-sidebar">
+
+            <div class="section-heading">
+                <span>▤ CASE FILES</span>
+                <span>•••</span>
+            </div>
+
+            <div class="active-case">
+                <span class="tiny-label">ACTIVE INVESTIGATION</span>
+                <h3 id="caseTitle">THE MIDNIGHT KILLER</h3>
+                <p>CASE ID: CN-2026-001</p>
+                <span class="status-badge">● INVESTIGATING</span>
+            </div>
+
+            <div class="side-heading">INVESTIGATION FILES</div>
+
+            <div class="case-list">
+                <button class="case-item selected" data-case="midnight">
+                    <span>01</span>
+                    <span>The Midnight Killer</span>
+                    <small>ACTIVE</small>
+                </button>
+
+                <button class="case-item" data-case="black">
+                    <span>02</span>
+                    <span>The Black Signal</span>
+                    <small>CLOSED</small>
+                </button>
+
+                <button class="case-item" data-case="ghost">
+                    <span>03</span>
+                    <span>Ghost Protocol</span>
+                    <small>OPEN</small>
+                </button>
+            </div>
+
+            <div class="side-heading">CASE LOCATION</div>
+
+            <div class="location-card">
+                <div class="location-image">
+                    <span>◉</span>
+                </div>
+                <h4 id="locationName">Abandoned Warehouse</h4>
+                <p>Sector 07 · New York</p>
+                <div class="location-status">LOCATION IDENTIFIED</div>
+            </div>
+
+            <div class="side-heading">SECURITY ACCESS</div>
+
+            <div class="security-card">
+                <span class="security-icon">▣</span>
+                <div>
+                    <strong>Evidence Database</strong>
+                    <small>Connected and secured</small>
+                </div>
+                <span class="online-dot"></span>
+            </div>
+
+            <div class="security-card">
+                <span class="security-icon">◈</span>
+                <div>
+                    <strong>Camera Network</strong>
+                    <small>Live connection</small>
+                </div>
+                <span class="online-dot"></span>
+            </div>
+
+        </aside>
+
+        <!-- CENTER WORKSPACE -->
+        <main class="workspace">
+
+            <div class="workspace-header">
+                <div>
+                    <span class="tiny-label">INVESTIGATION WORKSPACE</span>
+                    <h2>EVIDENCE CONNECTION BOARD</h2>
+                </div>
+
+                <div class="board-controls">
+                    <button id="addEvidenceBtn">＋ ADD CLUE</button>
+                    <button id="zoomBtn">⌕ ZOOM</button>
+                </div>
+            </div>
+
+            <div class="board-toolbar">
+                <span>BOARD VIEW</span>
+                <span class="toolbar-active">EVIDENCE</span>
+                <span>CONNECTIONS</span>
+                <span>TIMELINE</span>
+            </div>
+
+            <!-- EVIDENCE BOARD -->
+            <section class="evidence-board" id="evidenceBoard">
+
+                <svg class="connections" id="connections">
+                    <line x1="12%" y1="20%" x2="43%" y2="27%"/>
+                    <line x1="43%" y1="27%" x2="76%" y2="20%"/>
+                    <line x1="43%" y1="27%" x2="55%" y2="70%"/>
+                    <line x1="76%" y1="20%" x2="83%" y2="66%"/>
+                    <line x1="12%" y1="20%" x2="55%" y2="70%"/>
+                    <line x1="76%" y1="20%" x2="55%" y2="70%"/>
+                    <line x1="43%" y1="27%" x2="83%" y2="66%"/>
+                </svg>
+
+                <div class="evidence-node node-1" data-evidence="photo">
+                    <div class="evidence-photo warehouse-photo">
+                        <span>01</span>
+                    </div>
+                    <div class="evidence-caption">
+                        <strong>CRIME SCENE</strong>
+                        <small>Warehouse photograph</small>
+                    </div>
+                </div>
+
+                <div class="evidence-node node-2" data-evidence="message">
+                    <div class="evidence-photo document-photo">
+                        <span>02</span>
+                        <div class="document-lines"></div>
+                    </div>
+                    <div class="evidence-caption">
+                        <strong>UNKNOWN MESSAGE</strong>
+                        <small>Recovered evidence</small>
+                    </div>
+                </div>
+
+                <div class="evidence-node node-3" data-evidence="victim">
+                    <div class="evidence-photo person-photo">
+                        <span>03</span>
+                    </div>
+                    <div class="evidence-caption">
+                        <strong>DR. ELENA VANCE</strong>
+                        <small>Victim · Researcher</small>
+                    </div>
+                </div>
+
+                <div class="evidence-node node-4" data-evidence="suspect">
+                    <div class="evidence-photo suspect-photo">
+                        <span>04</span>
+                    </div>
+                    <div class="evidence-caption">
+                        <strong>JAY GHOST MILLER</strong>
+                        <small>Primary suspect</small>
+                    </div>
+                </div>
+
+                <div class="evidence-node node-5" data-evidence="weapon">
+                    <div class="evidence-photo weapon-photo">
+                        <span>05</span>
+                    </div>
+                    <div class="evidence-caption">
+                        <strong>UNKNOWN OBJECT</strong>
+                        <small>Possible weapon</small>
+                    </div>
+                </div>
+
+                <div class="evidence-node node-6" data-evidence="witness">
+                    <div class="evidence-photo witness-photo">
+                        <span>06</span>
+                    </div>
+                    <div class="evidence-caption">
+                        <strong>UNIT-7</strong>
+                        <small>Witness statement</small>
+                    </div>
+                </div>
+
+                <div class="board-pin pin-1"></div>
+                <div class="board-pin pin-2"></div>
+                <div class="board-pin pin-3"></div>
+
+                <div class="board-empty" id="emptyBoard" hidden>
+                    NO EVIDENCE AVAILABLE
+                </div>
+
+            </section>
+
+            <!-- INVESTIGATION CHAT -->
+            <section class="chat-panel">
+
+                <div class="chat-header">
+                    <div class="chat-avatar">AI</div>
+                    <div>
+                        <strong>DETECTIVE ASSISTANT</strong>
+                        <small><span class="online-dot"></span> ONLINE · READY TO ANALYZE</small>
+                    </div>
+                    <button id="clearChatBtn">CLEAR CHAT</button>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message assistant">
+                        <div class="message-avatar">AI</div>
+                        <div class="message-content">
+                            <strong>DETECTIVE ASSISTANT</strong>
+                            <p>Welcome, Detective. The investigation is active. I have reviewed the available evidence. What would you like to investigate?</p>
+                        </div>
+                    </div>
+
+                    <div class="message user">
+                        <div class="message-content">
+                            <strong>YOU</strong>
+                            <p>What is the connection between the suspects?</p>
+                        </div>
+                    </div>
+
+                    <div class="message assistant">
+                        <div class="message-avatar">AI</div>
+                        <div class="message-content">
+                            <strong>DETECTIVE ASSISTANT</strong>
+                            <p>Initial evidence suggests that the victim and the primary suspect had a professional connection. Further investigation is required.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="chat-input-area" id="chatForm">
+                    <input type="text" id="chatInput"
+                        placeholder="Ask the detective assistant..."
+                        autocomplete="off">
+                    <button type="submit">➤</button>
+                </form>
+
+            </section>
+
+        </main>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="sidebar right-sidebar">
+
+            <div class="section-heading">
+                <span>♙ SUSPECTS</span>
+                <span>03</span>
+            </div>
+
+            <div class="suspect-list">
+
+                <button class="suspect-card" data-suspect="jay">
+                    <div class="suspect-avatar avatar-jay">JM</div>
+                    <div class="suspect-info">
+                        <strong>JAY GHOST MILLER</strong>
+                        <small>PRIMARY SUSPECT</small>
+                        <span class="risk high">HIGH RISK</span>
+                    </div>
+                </button>
+
+                <button class="suspect-card active" data-suspect="elena">
+                    <div class="suspect-avatar avatar-elena">EV</div>
+                    <div class="suspect-info">
+                        <strong>DR. ELENA VANCE</strong>
+                        <small>VICTIM / RESEARCHER</small>
+                        <span class="risk medium">UNDER REVIEW</span>
+                    </div>
+                </button>
+
+                <button class="suspect-card" data-suspect="unit">
+                    <div class="suspect-avatar avatar-unit">U7</div>
+                    <div class="suspect-info">
+                        <strong>UNIT-7</strong>
+                        <small>WITNESS</small>
+                        <span class="risk low">LOW RISK</span>
+                    </div>
+                </button>
+
+            </div>
+
+            <div class="side-heading">SELECTED PROFILE</div>
+
+            <div class="profile-card" id="profileCard">
+                <div class="profile-avatar" id="profileAvatar">EV</div>
+                <h3 id="profileName">DR. ELENA VANCE</h3>
+                <span class="profile-tag" id="profileRole">VICTIM / RESEARCHER</span>
+
+                <div class="profile-details">
+                    <div>
+                        <small>AGE</small>
+                        <strong id="profileAge">32</strong>
+                    </div>
+                    <div>
+                        <small>STATUS</small>
+                        <strong id="profileStatus">DECEASED</strong>
+                    </div>
+                </div>
+
+                <div class="profile-description">
+                    <small>INVESTIGATION NOTES</small>
+                    <p id="profileDescription">
+                        A scientist working on classified research.
+                        Last seen near the warehouse.
+                    </p>
+                </div>
+
+                <button class="profile-button" id="viewProfileBtn">
+                    VIEW FULL PROFILE →
+                </button>
+            </div>
+
+            <div class="side-heading">CASE PROGRESS</div>
+
+            <div class="progress-card">
+                <div class="progress-text">
+                    <span>INVESTIGATION</span>
+                    <strong id="progressNumber">65%</strong>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <small>Evidence collection in progress</small>
+            </div>
+
+        </aside>
+
+    </div>
+</div>
+
+<!-- DETAIL MODAL -->
+<div class="modal-overlay" id="detailModal">
+    <div class="modal">
+        <button class="modal-close" id="closeModal">✕</button>
+        <span class="tiny-label">INVESTIGATION RECORD</span>
+        <h2 id="modalTitle">EVIDENCE DETAILS</h2>
+        <p id="modalDescription"></p>
+        <button class="modal-action" id="modalAction">CLOSE RECORD</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
